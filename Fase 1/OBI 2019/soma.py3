@@ -1,8 +1,7 @@
 # https://olimpiada.ic.unicamp.br/pratique/p2/2019/f1/soma/
 
 def soma(nums, k):
-	arr_sums = {}
-	arr_sums[0] = 1
+	arr_sums = {0:1}
 
 	soma = 0
 	result = 0

@@ -13,8 +13,6 @@ def join(x, y):
 	if x == y:
 		return 
 
-	if weight
-
 	father[find(x)] = find(y)
 
 
@@ -25,7 +23,6 @@ weight = [0] * (N+1)
 for _ in range(K):
 	F1, F2 = [int(n) for n in input().split()]
 	join(F1, F2)
-	print(father)
 
 ans = 0
 for i in range(1, N+1):

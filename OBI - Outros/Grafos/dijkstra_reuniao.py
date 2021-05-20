@@ -33,7 +33,6 @@ for _ in range(M):
 	U, V, W = read_num()
 	graph[U][V] = min(W, graph[U].get(V, float('inf')))
 	graph[V][U] = min(W, graph[V].get(U, float('inf')))
-
 ans = float('inf')
 
 for vertex in range(N):

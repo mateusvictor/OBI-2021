@@ -9,7 +9,6 @@ for i in range(N):
 	X, Y = [int(cor) for cor in input().split()]
 	pontos.append([X, Y])
 
-print("pontos:", pontos)
 
 pares = []
 for A in range(N + 1):
@@ -22,6 +21,7 @@ for A in range(N + 1):
 		pares.append(temp)
 
 pares.sort()
+print(pares)
 
 for par in pares:
 	print("PAR: ", par)

@@ -1,38 +1,63 @@
-class edge:
-	def __init__(self, dist, x, y):
-		self.dist = dist
-		self.x = x
-		self.y = y
-
-
-def compare(a, b):
-	return a.dist < b.dist
+class Edge:
+	def __init__(self, n_from, n_to, weight):
+		self.n_from = n_from
+		self.n_to = n_to
+		self.weight = weight
 
 
 def find(x):
-	while father[x] != x:
-		x = father[x]
+	if father[x] == x:
+		return x
 
-	return x
+	father[x] = find(father[x])
 
+	return father[x]
 
-def join(a, b):
-	a = find(a)
-	b = find(b)
+def join(x, y):
+	x = find(x)
+	y = find(y)
 
-	if weight[a] < weight[b]:
-		father[a] = b
-	elif weight[b] < weight[a]:
-		father[b] = a
+	if x == y:
+		return 
+
+	if weight[x] < weight[y]:
+		father[x] = y
+
+	elif weight[y] < weight[x]:
+		father[y] = x
 	else:
-		pai[a] = b
-		peso[b] += 1
+		father[x] = y
+		weight[y] += 1
 
-V, E = 6, 9
 
-father = []
-weight = []
+graph = [
+	[],
+	[(6, 10), (2, 28)],
+	[(7, 14), (3, 16), (1, 28)],
+	[(4, 12), (2, 16)],
+	[(3, 12), (7, 18), (5, 22)],
+	[(4, 22), (7, 24), (6, 25)],
+	[(1, 10), (5, 25)],
+]
 
-edges = []
-mst = []
+nodes = 7
+edges = [(1, 6, 10), (1, 2, 28), (2, 7, 14), (2, 3, 16),
+		(3, 4, 12), (4, 7, 18), (4, 5, 22), (5, 7, 24), (5, 6, 25)]
 
+
+edges = sorted(edges, key= lambda x:x[2])
+visited = [False] * (nodes+1)
+father = [i for i in range(nodes+1)]
+weight = [0] * (nodes+1)
+soma = 0
+
+for edge in edges:
+
+	x, y, z = edge
+
+	if find(x) != find(y):
+		join(x, y)
+		soma += z
+
+	
+print(soma)

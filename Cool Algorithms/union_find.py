@@ -5,19 +5,36 @@ def find(x):
 		x = father[x]
 	return x
 
-def f(x):
+def find(x):
 	if father[x] == x:
 		return x
-	return find(father[x])
+	
+	father[x]=find(father[x])
+	return father[x]
 
 
 def join(x, y):
-	father[find(x)] = find(y)
+	x = find(x)
+	y = find(y);
+
+	if x == y:
+		return
+
+	if weight[x] < weight[y]:
+		father[x] = y
+	elif weight[x] > weight[y]:
+		father[y] = x
+
+	if weight[x] == weight[y]:
+		father[x] = y
+		weight[y] += 1
 
 
 N, K = [int(n) for n in input().split()]
 
 father = [i for i in range(0, N+1)]
+weight = [i for i in range(0, N+1)]
+
 
 for _ in range(K):
 	op, bank1, bank2 = [int(n) if n.isnumeric() else n for n in input().split()]

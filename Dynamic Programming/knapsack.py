@@ -28,18 +28,16 @@ def knapsack(item, capacity):
 
 	table[item][capacity] = result
 	return result
-
-N, C = 4, 8
-length = C+1
-weight = [None, 1, 2, 5, 6]
-value = [None, 2, 3, 4, 5]
-table = [[False for _ in range(length)] for _ in range(length)]
-"""
 N, C = 5, 10
 length = N+6
 weight = [None, 1, 2, 4, 2, 5]
 value = [None, 5, 3, 5, 3, 2]
 table = [[False for _ in range(length)] for _ in range(length)]
-"""
-# print(naive_solution(N, C))
+
 print(knapsack(N, C))
+
+# N, C = 4, 8
+# length = C+1
+# weight = [None, 1, 2, 5, 6]
+# value = [None, 2, 3, 4, 5]
+# table = [[False for _ in range(length)] for _ in range(length)]
